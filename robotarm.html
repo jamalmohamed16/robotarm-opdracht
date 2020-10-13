@@ -1,0 +1,72 @@
+<html>
+
+     <body>
+
+         <canvas id="canvas" width="800" height="600"></canvas>
+
+         <script>
+
+             var canvas = document.getElementById("canvas");
+
+             var robotArm = new robotArm(canvas);
+
+             robotArm.speed = 550;
+ 
+            robotArm.randomLevel(2,8);
+ 
+            var sorter = {​​​​"red":9, "blue":8, "white":7, "purple":6,}​​​​:
+
+             var move = true;
+
+             var row = 0;
+ 
+            while(move == true){​​​​
+
+                 robotArm.grab();
+
+                 color = robotArm.scan():
+
+                 if(color =!null){​​​​
+
+                     console.log("waarde is: " + sorter[color]);
+
+                     for(i = 0; i < sorter[color] - row; i++){​​​​
+
+                         robotArm.moveRight();
+
+                     }​​​​
+
+                     robotArm.drop();
+
+                     for(i = 0; i < sorter[color] - row; i++){​​​​
+
+                         robotArm.moveLeft();
+
+                     }​​​​
+
+                 }​​​​ else {​​​​
+
+                     row++;
+
+                     if(row < 2){​​​​
+
+                         robotArm.moveRight();
+
+                     }​​​​ else {​​​​
+
+                         move = false;
+
+                     }​​​​
+ 
+                }​​​​
+
+             }​​​​
+ 
+ 
+            robotArm.run();
+
+         </script>
+
+     </body>
+
+ </html>
